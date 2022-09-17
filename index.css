@@ -1,0 +1,105 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding-block: 3vmax;
+	padding-inline: 4vmax;
+	display: grid;
+	min-width: 100%;
+	min-height: 100%;
+	box-sizing: border-box;
+}
+
+.skies {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 2vmax;
+	height: 100%;
+}
+
+.sky {
+	position: relative;
+}
+
+.sky::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	content: '';
+	background: paint(noise);
+	mix-blend-mode: overlay;
+	pointer-events: none;
+}
+
+.morning {
+	background-image: linear-gradient(
+		hsl(227, 85%, 35%),
+		hsl(215, 68%, 49%),
+		hsl(209, 89%, 64%),
+		hsl(193, 64%, 72%)
+	);
+}
+
+.morning::after {
+	--noise-size: 1;
+	--noise-hue: 0;
+	--noise-saturation: 0%;
+	--noise-lightness: 45% 65%;
+	background-size: 64px 64px;
+}
+
+.afternoon {
+	background-image: linear-gradient(
+		hsl(220, 80%, 32%),
+		hsl(211, 63%, 47%),
+		hsl(198, 65%, 55%),
+		hsl(168, 53%, 77%)
+	);
+}
+
+.afternoon::after {
+	--noise-size: 2;
+	--noise-hue: 60 80;
+	--noise-saturation: 10%;
+	--noise-lightness: 45% 65%;
+	background-size: 128px 128px;
+}
+
+.evening {
+	background-image: linear-gradient(
+		hsl(-115, 47%, 20%),
+		hsl(-64, 48%, 25%),
+		hsl(0, 39%, 48%),
+		hsl(32, 73%, 73%)
+	);
+}
+
+.evening::after {
+	--noise-size: 4;
+	--noise-hue: -45 15;
+	--noise-saturation: 10%;
+	--noise-lightness: 45% 65%;
+	background-size: 256px 256px;
+}
+
+.night {
+	background-image: linear-gradient(
+		hsl(215, 100%, 6%),
+		hsl(221, 54%, 15%),
+		hsl(232, 43%, 21%),
+		hsl(243, 26%, 27%)
+	);
+}
+
+.night::after {
+	--noise-size: 8;
+	--noise-hue: 200 240;
+	--noise-saturation: 30%;
+	--noise-lightness: 30% 65%;
+	background-size: 512px 512px;
+}
