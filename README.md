@@ -2,6 +2,10 @@
 
 CSS Houdini paint worklet for generating noise textures.
 
+## Demo
+
+https://kamide.github.io/css-houdini-noise/
+
 ## Properties
 
 Properties can be imported from [./src/noise.js](./src/noise.js).
@@ -13,6 +17,12 @@ export const inputProperties = [
 		syntax: '<integer>',
 		inherits: false,
 		initialValue: 1,
+	},
+	{
+		name: '--noise-shape',
+		syntax: 'square | circle',
+		inherits: false,
+		initialValue: 'square',
 	},
 	{
 		name: '--noise-hue',
@@ -44,7 +54,3 @@ export const inputProperties = [
 ## Register
 
 To register the paint worklet, import [./src/register.js](./src/register.js) as a module.
-
-## Demo
-
-https://kamide.github.io/css-houdini-noise/

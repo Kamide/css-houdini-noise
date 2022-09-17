@@ -80,11 +80,12 @@ body {
 }
 
 .evening::after {
-	--noise-size: 4;
+	--noise-size: 16;
+	--noise-shape: circle;
 	--noise-hue: -45 15;
 	--noise-saturation: 10%;
 	--noise-lightness: 45% 65%;
-	background-size: 256px 256px;
+	background-size: 512px 512px;
 }
 
 .night {
@@ -97,9 +98,10 @@ body {
 }
 
 .night::after {
-	--noise-size: 8;
+	--noise-size: 32;
+	--noise-shape: circle;
 	--noise-hue: 200 240;
 	--noise-saturation: 30%;
 	--noise-lightness: 30% 65%;
-	background-size: 512px 512px;
+	background-size: 1024px 1024px;
 }

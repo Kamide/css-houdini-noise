@@ -6,6 +6,12 @@ export const inputProperties = [
 		initialValue: 1,
 	},
 	{
+		name: '--noise-shape',
+		syntax: 'square | circle',
+		inherits: false,
+		initialValue: 'square',
+	},
+	{
 		name: '--noise-hue',
 		syntax: '<integer>+',
 		inherits: false,
@@ -36,6 +42,7 @@ export class Noise {
 
 	paint(context, canvas, props) {
 		const size = clamp(props.get('--noise-size').value, 0, Number.MAX_SAFE_INTEGER);
+		const shape = props.get('--noise-shape').value;
 
 		let [minHue, maxHue = minHue] = props.getAll('--noise-hue')
 			.map(p => mod(p.value, 360));
@@ -59,9 +66,17 @@ export class Noise {
 			const s = random(minSaturation, maxSaturation);
 			const l = random(minLightness, maxLightness);
 			const a = random(minAlpha, maxAlpha);
-
 			context.fillStyle = `hsl(${h}, ${s}%, ${l}%, ${a})`;
-			context.fillRect(x, y, size, size);
+
+			if (shape === 'square') {
+				context.fillRect(x, y, size, size);
+			}
+			else {
+				context.beginPath()
+				context.arc(x + size / 2, y + size / 2, size / 2, 0, 2 * Math.PI)
+				context.closePath()
+				context.fill()
+			}
 
 			x += size;
 			if (x >= canvas.width) {
